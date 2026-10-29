@@ -90,6 +90,7 @@ These visuals help identify segments for further investigation, but their result
 ## Data Quality & Limitations
 
 - Audited missing values, duplicate records, data types and financial outliers.
+- Working without direction
 - Excluded unresolved loan outcomes from the binary good-versus-bad analysis rather than incorrectly labelling them.
 - Results describe historical associations and do not establish causation.
 - Missing data, subgroup sizes and differences in borrower composition may affect comparisons.

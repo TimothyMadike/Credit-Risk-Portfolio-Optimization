@@ -84,7 +84,7 @@ credit-risk-portfolio/
 │
 ├── README.md
 ├── dashboard/
-├── python/
+├── scripts/
 ├── reports/
 └── .gitignore
 ```

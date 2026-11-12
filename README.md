@@ -3,102 +3,98 @@
 **Tools:** Python · Power BI  
 **Domain:** Credit Risk · Financial Services · Portfolio Analytics
 
+# LendingClub Credit Risk Analysis & Portfolio Monitoring
+
 ## Project Overview
 
-Analysed historical LendingClub loan data to identify borrower and loan characteristics associated with bad-loan risk. The project combines data cleaning, data-quality auditing, exploratory data analysis (EDA) and interactive Power BI reporting to translate large-scale financial data into business insights.
+This project analyses LendingClub loan data to explore borrower characteristics associated with loan defaults and identify patterns that can support credit risk monitoring.
 
-## Business Problem
+Using Python for data preparation and exploratory analysis, and Power BI for interactive visualisation, the project examines loan performance across borrower and loan characteristics.
 
-How can credit-risk teams use historical loan data to identify risk patterns, understand portfolio performance and determine which borrower segments warrant further investigation?
+## Business Questions
 
-The analysis examines credit grades, interest rates, loan terms, affordability indicators, borrower characteristics and loan purposes.
+- How does bad-loan rate vary across different loan grades?
+- How are debt-to-income ratios and annual income associated with loan performance?
+- Which loan characteristics are associated with higher observed default rates?
+- How can borrower and loan segments support more informed portfolio monitoring?
 
-## Dataset & Methodology
+## Tools & Technologies
 
-The cleaned dataset contained approximately **2.26 million records and 107 columns**.
+- **Python:** Data cleaning, quality audits, exploratory data analysis and credit risk investigations.
+- **Pandas:** Data manipulation and analysis.
+- **Power BI:** Interactive dashboards, visual analysis and exploration.
+- **GitHub:** Project documentation and version control.
 
-Loan outcomes were defined as follows:
-- **Bad (1):** Charged Off or Default.
-- **Good (0):** Fully Paid.
-- **Unclassified:** Current, late, in grace period or other unresolved outcomes, excluded from the binary analysis.
+## Data Preparation & Methodology
 
-The classified analysis included **1,306,387 loans**:
-- Good loans: 1,043,940
-- Bad loans: 262,447
-- Overall dashboard bad-loan rate: **20.07%**
+The analysis uses LendingClub loan data. Data preparation included cleaning, missingness assessment, financial data quality checks and exploratory analysis.
 
-Python was used for data cleaning, missingness and financial-data audits, outcome classification and EDA. Power BI was used to create interactive KPIs, risk comparisons, a Decomposition Tree and Key Influencers.
+Loan outcomes were classified as follows:
 
-## Key Business Findings
+- **Good loans (0):** Fully Paid.
+- **Bad loans (1):** Charged Off and Default.
+- **Unclassified:** Current, late, grace-period and other unresolved loan statuses were excluded from binary outcome analysis.
 
-### 1. Credit grade shows substantial differences in bad-loan rates
+The classified population contains 1,306,387 loans.
 
-| Grade | Bad-loan rate |
-|:---:|---:|
-| A | 6.09% |
-| B | 13.45% |
-| C | 22.51% |
-| D | 30.43% |
-| E | 38.57% |
-| F | 45.25% |
-| G | 49.80% |
+## Key Findings
 
-Grade G had an observed bad-loan rate of 49.80%, compared with 6.09% for Grade A.
+The overall bad-loan rate across classified loans was **20.07%**.
 
-**Business implication:** Monitor outcomes by grade and subgrade to identify segments whose realised performance differs from expectations.
+| Analysis | Key Finding |
+|---|---:|
+| Grade A bad-loan rate | 6.09% |
+| Grade G bad-loan rate | 49.80% |
+| DTI above 40 | 31.78% |
+| DTI between 0 and 10 | 14.92% |
+| 36-month loan bad-loan rate | 16.12% |
+| 60-month loan bad-loan rate | 32.56% |
+| Small business loan bad-loan rate | 29.91% |
 
-### 2. Affordability indicators are associated with risk
+The analysis shows substantial differences in observed bad-loan rates across loan grades, debt-to-income bands, loan terms and loan purposes.
 
-- DTI above 40%: **31.78%** bad-loan rate.
-- DTI between 0% and 10%: **14.92%**.
-- Annual income below $25,000: **24.87%**.
-- Annual income above $150,000: **15.06%**.
+## Business Recommendations
 
-**Business implication:** Investigate how affordability indicators relate to bad-loan outcomes within comparable credit grades and loan terms.
+- Monitor higher-risk loan grades and borrower segments more closely.
+- Consider debt-to-income levels as one component of borrower risk assessment.
+- Compare loan performance across repayment terms when reviewing portfolio composition.
+- Use segment-level monitoring to identify changes in portfolio risk over time.
+- Combine multiple borrower characteristics rather than relying on a single risk indicator.
 
-### 3. Loan term and amount show different risk profiles
+## Dashboard Preview
 
-- 36-month loans: **16.12%** bad-loan rate.
-- 60-month loans: **32.56%**.
-- Loans above $35,000: **23.92%**.
-- Loans below $5,000: **15.69%**.
+The Power BI dashboard provides an interactive view of loan performance, portfolio risk indicators, screening segments and factors associated with bad loans.
 
-**Business implication:** Compare risk across loan terms and sizes while accounting for differences in borrower profiles and credit grades. These observed associations do not establish causation.
+**Dashboard screenshot:** `dashboard/dashboard_screenshot.png`
 
-### 4. Risk varies by home ownership and loan purpose
+**Power BI file:** `dashboard/credit_risk_dashboard.pbix`
 
-- Renters: **23.36%** bad-loan rate, compared with 17.32% for mortgage holders.
-- Small-business loans: **29.91%**, compared with 21.27% for debt-consolidation loans.
-- Verified income: **23.94%**, compared with 14.77% for income not verified.
+## Limitations
 
-**Business implication:** Investigate whether these differences persist after accounting for other borrower and loan characteristics.
+- Unclassified loan statuses were excluded from binary good/bad outcome analysis.
+- Missing, invalid and extreme values were assessed and documented rather than automatically treated as valid observations.
+- The findings describe associations, not causal relationships.
+- This project is exploratory and does not represent a validated predictive credit scoring model.
+- The analysis is based on historical LendingClub data and should not be interpreted as a direct assessment of current lending conditions.
 
-### 5. Combined risk factors support deeper investigation
+## Project Structure
 
-The Power BI Decomposition Tree and Key Influencers allow users to explore combinations of credit grade, interest rate, income, home ownership and loan term.
+```text
+credit-risk-portfolio/
+│
+├── README.md
+├── dashboard/
+├── python/
+├── reports/
+└── .gitignore
+```
 
-These visuals help identify segments for further investigation, but their results should be interpreted alongside subgroup sizes, filters and overlapping characteristics.
+## Author
 
-## Recommendations
+**Timothy Madike**
 
-1. **Monitor credit grades:** Compare observed bad-loan rates across grades and subgrades.
-2. **Investigate affordability:** Examine DTI and income within comparable risk segments.
-3. **Compare loan terms:** Investigate differences between 36-month and 60-month loans after accounting for borrower profiles.
-4. **Assess financial exposure:** Compare bad-loan rates with funded amounts to distinguish risk levels from potential portfolio impact.
-5. **Validate findings:** Test whether observed patterns persist across relevant segments and separate datasets before informing lending decisions.
+BCom Quantitative Management student at UNISA | Aspiring Data Analyst
 
-## Data Quality & Limitations
+Interested in applying Python, SQL, Excel and Power BI to solve business problems and communicate data-driven insights.
 
-- Audited missing values, duplicate records, data types and financial outliers.
-- Working without direction
-- Excluded unresolved loan outcomes from the binary good-versus-bad analysis rather than incorrectly labelling them.
-- Results describe historical associations and do not establish causation.
-- Missing data, subgroup sizes and differences in borrower composition may affect comparisons.
-- The dashboard is an exploratory reporting tool, not a validated default-prediction model.
-- Findings from LendingClub should not automatically be generalised to another lender's portfolio.
 
-## Conclusion
-
-The analysis demonstrates an end-to-end credit-risk workflow combining data preparation, outcome classification, exploratory analysis and interactive reporting.
-
-The largest observed differences were across credit grades, with additional risk variation by DTI, income, loan term, loan amount and other borrower characteristics. The dashboard helps stakeholders explore these patterns and identify areas for further investigation, while recognising that additional validation is required before making lending-policy decisions.
